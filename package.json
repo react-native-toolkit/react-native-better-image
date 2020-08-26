@@ -1,6 +1,6 @@
 {
   "name": "react-native-better-image",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A better image component for react-native with fallback images &amp; progressive loading support",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -34,13 +34,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/DaniAkash/react-native-better-image",
+  "repository": "https://github.com/react-native-toolkit/react-native-better-image",
   "author": "DaniAkash <s.daniakash@gmail.com> (https://github.com/DaniAkash)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DaniAkash/react-native-better-image/issues"
+    "url": "https://github.com/react-native-toolkit/react-native-better-image/issues"
   },
-  "homepage": "https://github.com/DaniAkash/react-native-better-image#readme",
+  "homepage": "https://github.com/react-native-toolkit/react-native-better-image#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",
