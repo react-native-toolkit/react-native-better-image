@@ -28,6 +28,7 @@ function useInterval(callback: () => unknown, delay: number) {
       let id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
+    return () => null;
   }, [delay]);
 }
 
