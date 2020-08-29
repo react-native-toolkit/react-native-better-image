@@ -2,21 +2,21 @@
   "name": "react-native-better-image-example",
   "displayName": "BetterImage Example",
   "expo": {
-    "name": "react-native-better-image-example",
+    "name": "Better Image Example",
     "slug": "react-native-better-image-example",
     "description": "Example app for react-native-better-image",
     "privacy": "public",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": ["ios", "android", "web"],
+    "splash": {
+      "image": "./src/assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "icon": "./src/assets/logo.png",
     "ios": {
       "supportsTablet": true
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }
