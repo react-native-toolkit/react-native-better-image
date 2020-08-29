@@ -9,7 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "start": "expo start",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "expo": "^38.0.0",
@@ -23,8 +25,15 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/runtime": "^7.9.6",
+    "@storybook/addon-actions": "^6.0.20",
+    "@storybook/addon-essentials": "^6.0.20",
+    "@storybook/addon-links": "^6.0.20",
+    "@storybook/react-native": "^5.3.21",
+    "@storybook/react-native-server": "^5.3.21",
+    "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "^8.2.3",
-    "expo-cli": "^3.21.12"
+    "expo-cli": "^3.21.12",
+    "react-is": "^16.13.1"
   }
 }
