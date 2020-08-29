@@ -47,14 +47,14 @@ storiesOf('Better Image', module)
   .add('Image with thumbnail', () => (
     <BetterImage
       {...validSource()}
-      containerStyle={style.imageContainer}
+      viewStyle={style.imageContainer}
       resizeMode="contain"
     />
   ))
   .add('Image with broken source & fallback placeholder', () => (
     <BetterImage
       {...inValidSource()}
-      containerStyle={style.imageContainer}
+      viewStyle={style.imageContainer}
       resizeMode="contain"
     />
   ))
@@ -63,7 +63,7 @@ storiesOf('Better Image', module)
     () => (
       <BetterImage
         {...invalidImageOnlySource()}
-        containerStyle={style.imageContainer}
+        viewStyle={style.imageContainer}
         resizeMode="contain"
       />
     )

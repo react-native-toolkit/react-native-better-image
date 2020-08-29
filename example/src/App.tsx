@@ -84,7 +84,7 @@ function App() {
     <View style={styles.container}>
       <Text>{imageSource.title}</Text>
       <BetterImage
-        containerStyle={style}
+        viewStyle={style}
         source={{
           uri: imageSource.image(),
         }}
