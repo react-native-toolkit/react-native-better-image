@@ -15,7 +15,7 @@ import {
 import { useDeepCompareEffectNoCheck } from 'use-deep-compare-effect';
 
 export interface BetterImageProps extends ImageProps {
-  containerStyle?: StyleProp<ViewStyle>;
+  viewStyle?: StyleProp<ViewStyle>;
   thumbnailFadeDuration?: number;
   imageFadeDuration?: number;
   thumbnailSource?: ImageSourcePropType;
@@ -30,7 +30,7 @@ const AnimatedImage = createAnimatedComponent(Image);
 const AnimatedImageBackground = createAnimatedComponent(ImageBackground);
 
 const BetterImage = ({
-  containerStyle,
+  viewStyle,
   thumbnailFadeDuration = 250,
   imageFadeDuration = 250,
   thumbnailSource,
@@ -47,12 +47,25 @@ const BetterImage = ({
 }: BetterImageProps) => {
   const imageOpacity = useRef(new Value(0)).current;
   const thumbnailOpacity = useRef(new Value(0)).current;
+  const thumbnailAnimationProgress = useRef<
+    Animated.CompositeAnimation | undefined
+  >();
   const [hasError, setHasError] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const onImageLoad = () => {
+    setHasLoaded(true);
+
     timing(imageOpacity, {
       toValue: 1,
       duration: imageFadeDuration,
+      useNativeDriver: true,
+    }).start();
+
+    thumbnailAnimationProgress.current?.stop();
+    timing(thumbnailOpacity, {
+      toValue: 0,
+      duration: thumbnailFadeDuration,
       useNativeDriver: true,
     }).start();
 
@@ -60,11 +73,15 @@ const BetterImage = ({
   };
 
   const onThumbnailLoad = () => {
-    timing(thumbnailOpacity, {
-      toValue: 1,
-      duration: thumbnailFadeDuration,
-      useNativeDriver: true,
-    }).start();
+    if (!hasLoaded) {
+      const progress = timing(thumbnailOpacity, {
+        toValue: 1,
+        duration: thumbnailFadeDuration,
+        useNativeDriver: true,
+      });
+      thumbnailAnimationProgress.current = progress;
+      thumbnailAnimationProgress.current.start();
+    }
   };
 
   const onImageLoadError = (
@@ -79,6 +96,7 @@ const BetterImage = ({
       imageOpacity.setValue(0);
       thumbnailOpacity.setValue(0);
       setHasError(false);
+      setHasLoaded(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []),
     [source, thumbnailSource]
@@ -87,12 +105,16 @@ const BetterImage = ({
   const ImageComponent = children ? AnimatedImageBackground : AnimatedImage;
 
   return (
-    <View style={[styles.imageContainerStyle, containerStyle]}>
+    <View style={[styles.imageContainerStyle, viewStyle]}>
       {thumbnailSource ? (
         <ImageComponent
           children={children}
           onLoadEnd={onThumbnailLoad}
-          style={[styles.thumbnailImageStyle, { opacity: thumbnailOpacity }]}
+          style={[
+            styles.thumbnailImageStyle,
+            { opacity: thumbnailOpacity },
+            style,
+          ]}
           source={thumbnailSource}
           blurRadius={thumbnailBlurRadius}
           resizeMethod={resizeMethod}
