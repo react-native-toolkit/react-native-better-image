@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install -g yarn
-      - run: yarn install
+      - run: yarn bootstrap
       - run: yarn build
       - run: yarn test
   coverage:
@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: 12.x
       - run: npm install -g yarn
-      - run: yarn install
+      - run: yarn bootstrap
       - run: yarn build
       - uses: paambaati/codeclimate-action@v2.5.3
         env:
@@ -64,5 +64,5 @@ jobs:
           expo-version: 3.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: yarn install
+      - run: yarn bootstrap
       - run: expo publish
