@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import BetterImage from './BetterImage';
+
+<Meta title="Intro/Getting Started" />
+
+<img
+  src="https://github.com/react-native-toolkit/react-native-better-image/raw/master/assets/logo.png"
+  alt="better-image-logo"
+  height="100px"
+  width="100px"
+/>
+<br />
+<br />
+
+# React Native Better Image
+
+A better image component for react-native with fallback images & progressive loading support
+
+Built on top of `View`, `Image` & `Animated` components
+
+[![Build Status][build-badge]][build]
+[![Maintainability][maintainability-badge]][maintainability-url]
+[![Test Coverage][coverage-badge]][coverage-url]
+
+[![Version][version-badge]][package]
+[![Downloads][downloads-badge]][npmtrends]
+[![Bundlephobia][bundle-phobia-badge]][bundle-phobia]
+
+[![Star on GitHub][github-star-badge]][github-star]
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Twitter Follow][twitter-badge]][twitter]
+
+<div style={{ display: 'flex', flexDirection: 'row' }}>
+  <BetterImage
+    source={{
+      uri: `https://unsplash.com/photos/LcDpX2mYzoo/download?force=true&w=2400&bust=${Math.random()}`,
+    }}
+    thumbnailSource={{
+      uri: `https://unsplash.com/photos/LcDpX2mYzoo/download?force=true&w=24&bust=${Math.random()}`,
+    }}
+    viewStyle={{
+      height: 150,
+      width: 150,
+      margin: 8,
+    }}
+  />
+  <BetterImage
+    source={{
+      uri: `https://unsplash.com/photos/xFnA1azNEws/download?force=true&w=2400&bust=${Math.random()}`,
+    }}
+    thumbnailSource={{
+      uri: `https://unsplash.com/photos/xFnA1azNEws/download?force=true&w=24&bust=${Math.random()}`,
+    }}
+    viewStyle={{
+      height: 150,
+      width: 150,
+      margin: 8,
+    }}
+  />
+  <BetterImage
+    source={{
+      uri: `https://unsplash.com/photos/DmKMw1Rg2MY/download?force=true&w=2400&bust=${Math.random()}`,
+    }}
+    thumbnailSource={{
+      uri: `https://unsplash.com/photos/DmKMw1Rg2MY/download?force=true&w=24&bust=${Math.random()}`,
+    }}
+    viewStyle={{
+      height: 150,
+      width: 150,
+      margin: 8,
+    }}
+  />
+</div>
+
+```jsx
+import BetterImage from 'react-native-better-image';
+
+//...
+
+<BetterImage
+  source={{
+    // Full resolution image url
+    uri: `https://unsplash.com/photos/xFnA1azNEws/download?force=true&w=2400`,
+  }}
+  thumbnailSource={{
+    // A scaled down version of image for the thumbnail
+    uri: `https://unsplash.com/photos/xFnA1azNEws/download?force=true&w=24`,
+  }}
+  // style property for the <View> component inside which the <Image> component is implemented
+  viewStyle={{
+    height: 150,
+    width: 150,
+    margin: 8,
+  }}
+/>;
+```
+
+[build]: https://github.com/react-native-toolkit/react-native-better-image/actions
+[build-badge]: https://github.com/react-native-toolkit/react-native-better-image/workflows/build/badge.svg
+[coverage-badge]: https://api.codeclimate.com/v1/badges/acf5243d130542dde7c9/test_coverage
+[coverage-url]: https://codeclimate.com/github/react-native-toolkit/react-native-better-image/test_coverage
+[maintainability-badge]: https://api.codeclimate.com/v1/badges/acf5243d130542dde7c9/maintainability
+[maintainability-url]: https://codeclimate.com/github/react-native-toolkit/react-native-better-image/maintainability
+[bundle-phobia-badge]: https://badgen.net/bundlephobia/minzip/react-native-better-image
+[bundle-phobia]: https://bundlephobia.com/result?p=react-native-better-image
+[downloads-badge]: https://img.shields.io/npm/dm/react-native-better-image.svg?style=flat-square
+[npmtrends]: http://www.npmtrends.com/react-native-better-image
+[package]: https://www.npmjs.com/package/react-native-better-image
+[version-badge]: https://img.shields.io/npm/v/react-native-better-image.svg?style=flat-square
+[twitter]: https://twitter.com/dani_akash_
+[twitter-badge]: https://img.shields.io/twitter/follow/dani_akash_?style=social
+[github-watch-badge]: https://img.shields.io/github/watchers/react-native-toolkit/react-native-better-image.svg?style=social
+[github-watch]: https://github.com/react-native-toolkit/react-native-better-image/watchers
+[github-star-badge]: https://img.shields.io/github/stars/react-native-toolkit/react-native-better-image.svg?style=social
+[github-star]: https://github.com/react-native-toolkit/react-native-better-image/stargazers
