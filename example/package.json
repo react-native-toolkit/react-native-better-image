@@ -25,11 +25,11 @@
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/runtime": "^7.9.6",
+    "@expo/webpack-config": "^0.12.27",
     "@storybook/addon-actions": "^6.0.20",
     "@storybook/addon-essentials": "^6.0.20",
     "@storybook/addon-links": "^6.0.20",
-    "@storybook/react-native": "^5.3.21",
-    "@storybook/react-native-server": "^5.3.21",
+    "@storybook/react": "^6.0.20",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "^8.2.3",
