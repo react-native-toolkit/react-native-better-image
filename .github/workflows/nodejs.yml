@@ -76,6 +76,8 @@ jobs:
 
       - name: Publish Storybook to GH Pages 🕸
         run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Storybook to chromatic 🧪
         uses: chromaui/action@v1
