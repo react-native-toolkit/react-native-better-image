@@ -53,8 +53,8 @@ jobs:
     name: Install and publish
     runs-on: ubuntu-latest
     defaults:
-    run:
-      working-directory: example
+      run:
+        working-directory: example
 
     steps:
       - uses: actions/checkout@v2
