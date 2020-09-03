@@ -52,6 +52,10 @@ jobs:
     # needs: [test]
     name: Install and publish
     runs-on: ubuntu-latest
+    defaults:
+    run:
+      working-directory: example
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -59,7 +63,7 @@ jobs:
           node-version: 12.x
 
       - run: npm install -g yarn
-      - run: yarn bootstrap
+      - run: yarn install
       # - uses: expo/expo-github-action@v5
       #   with:
       #     expo-version: 3.x
@@ -70,19 +74,15 @@ jobs:
       #   working-directory: example
       #   run: expo publish
 
-      - name: Build StoryBook 📚
-        run: yarn example build-storybook
-
       - name: Publish Storybook to GH Pages 🕸
-        working-directory: example
-        run: yarn deploy-storybook --existing-output-dir=storybook-static --ci --host-token-env-variable=GITHUB_TOKEN
+        run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
 
       - name: Publish Storybook to chromatic 🧪
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: example/storybook-static
+
   # build-and-deploy:
   #   needs: [test]
   #   runs-on: ubuntu-latest
