@@ -57,9 +57,18 @@ const invalidImageOnlySource = () => ({
     uri: `https://pyt-images.imgix.net/images/place-holder.png?bust=${Math.random()}`,
   },
 });
-export const InvalidImageButValidThumbnail = Template.bind({});
-InvalidImageButValidThumbnail.args = {
+export const InvalidImageButWithValidThumbnail = Template.bind({});
+InvalidImageButWithValidThumbnail.args = {
   ...invalidImageOnlySource(),
   viewStyle: { height: 400, width: 400 },
   resizeMode: 'contain',
+};
+
+export const CustomImageFadeDuration = Template.bind({});
+CustomImageFadeDuration.args = {
+  ...validSource(),
+  viewStyle: { height: 400, width: 400 },
+  resizeMode: 'contain',
+  thumbnailFadeDuration: 250,
+  imageFadeDuration: 2000,
 };
