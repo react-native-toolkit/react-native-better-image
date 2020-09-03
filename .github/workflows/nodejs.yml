@@ -63,17 +63,25 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn bootstrap
-      - run: expo publish
+
+      - name: Publish App to expo 🚀
+        working-directory: example
+        run: expo publish
   build-and-deploy:
     needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@v2
         with:
           persist-credentials: false
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Install Node.js 🏗
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Build Project 🔧
         run: |
           npm install -g yarn
           yarn bootstrap
