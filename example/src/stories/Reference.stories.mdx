@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Intro/API Reference" />
+
+## API
+
+`BetterImage` component is built on top of the existing `Image` component. It extends all of the [`Image` component props](https://reactnative.dev/docs/image.html#props) with the following additional props:
+
+## `thumbnailSource?: ImageSourcePropType`
+
+Source of the thumbnail image.
+
+Provide a lower quality scaled down version of the original image (preferrably size <2kb) to act as the thumbnail. This thumbnail will be blurred & will fade out when the actual image loads, providing a progressive loading view
+
+## `fallbackSource?: ImageSourcePropType`
+
+Source of the fallback placeholder image
+
+Incase, the original image fails to load, this image will be displayed as a fallback or a placeholder in its place. It is recommended to have a local asset in this prop which will ensure an image is displayed even during poor or no network conditions.
+
+## `viewStyle?: StyleProp<ViewStyle>`
+
+Style prop for the `<View/>` component inside which the BetterImage component is implemented
+
+Usually, `style` prop is used for styling images. However, since a parent `<View/>` component is needed to implement fallback & thumbnails, `viewStyle` prop is needed to customize this image component.
+
+`style` prop still works but the styles are applied to the `<Image/>` component inside the parent `<View/>` component hence it might not produce the required result.
+
+## `thumbnailFadeDuration?: number`
+
+default value ﹣ 250
+
+Time in milliseconds, taken for the thumbnail to fade out when the actual image is loaded
+
+## `imageFadeDuration?: number`
+
+default value ﹣ 250
+
+Time in milliseconds, taken for the original image to fade in when it is loaded
+
+## `thumbnailBlurRadius?: number`
+
+default value ﹣ 1
+
+Blur radius of the thumbnail image
+
+## `children?: ReactNode`
+
+BetterImage supports children. If a children is provided, it automatically switches `<Image/>` component with `<ImageBackground/>` component.
