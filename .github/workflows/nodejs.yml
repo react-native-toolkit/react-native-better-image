@@ -67,6 +67,10 @@ jobs:
       - name: Publish App to expo 🚀
         working-directory: example
         run: expo publish
+
+      - name: Publish App to chromatic
+        working-directory: example
+        run: yarn chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   build-and-deploy:
     needs: [test]
     runs-on: ubuntu-latest
