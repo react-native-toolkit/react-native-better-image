@@ -60,14 +60,14 @@ const BetterImage = ({
       toValue: 1,
       duration: imageFadeDuration,
       useNativeDriver: true,
-    }).start();
-
-    thumbnailAnimationProgress.current?.stop();
-    timing(thumbnailOpacity, {
-      toValue: 0,
-      duration: thumbnailFadeDuration,
-      useNativeDriver: true,
-    }).start();
+    }).start(() => {
+      thumbnailAnimationProgress.current?.stop();
+      timing(thumbnailOpacity, {
+        toValue: 0,
+        duration: thumbnailFadeDuration,
+        useNativeDriver: true,
+      }).start();
+    });
 
     onLoadEnd && onLoadEnd();
   };
