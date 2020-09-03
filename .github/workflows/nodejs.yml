@@ -63,7 +63,7 @@ jobs:
           node-version: 12.x
 
       - run: npm install -g yarn
-      - run: yarn install
+      - run: cd .. && yarn bootstrap && cd example
       # - uses: expo/expo-github-action@v5
       #   with:
       #     expo-version: 3.x
