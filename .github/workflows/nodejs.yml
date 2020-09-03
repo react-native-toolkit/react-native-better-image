@@ -16,38 +16,38 @@ on:
     paths:
       - '!*.MD'
 jobs:
-  test:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macOS-latest]
-        node: ['12.x']
-    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
-    runs-on: ${{ matrix.platform }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node }}
-      - run: npm install -g yarn
-      - run: yarn bootstrap
-      - run: yarn test
-  coverage:
-    needs: [test]
-    name: coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: 12.x
-      - run: npm install -g yarn
-      - run: yarn bootstrap
-      - uses: paambaati/codeclimate-action@v2.5.3
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          coverageCommand: yarn coverage
-          debug: true
+  # test:
+  #   strategy:
+  #     matrix:
+  #       platform: [ubuntu-latest, macOS-latest]
+  #       node: ['12.x']
+  #   name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+  #   runs-on: ${{ matrix.platform }}
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-node@master
+  #       with:
+  #         node-version: ${{ matrix.node }}
+  #     - run: npm install -g yarn
+  #     - run: yarn bootstrap
+  #     - run: yarn test
+  # coverage:
+  #   needs: [test]
+  #   name: coverage
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-node@master
+  #       with:
+  #         node-version: 12.x
+  #     - run: npm install -g yarn
+  #     - run: yarn bootstrap
+  #     - uses: paambaati/codeclimate-action@v2.5.3
+  #       env:
+  #         CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+  #       with:
+  #         coverageCommand: yarn coverage
+  #         debug: true
   publish:
     # needs: [test]
     name: Install and publish
@@ -57,23 +57,23 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - uses: expo/expo-github-action@v5
-        with:
-          expo-version: 3.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: yarn bootstrap
+      # - uses: expo/expo-github-action@v5
+      #   with:
+      #     expo-version: 3.x
+      #     expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+      #     expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      # - run: yarn bootstrap
 
-      - name: Publish Example App to expo 🚀
-        working-directory: example
-        run: expo publish
+      # - name: Publish Example App to expo 🚀
+      #   working-directory: example
+      #   run: expo publish
 
       - name: Build StoryBook 📚
         run: yarn example build-storybook
 
       - name: Publish Storybook to GH Pages 🕸
         working-directory: example
-        run: yarn deploy-storybook --existing-output-dir=example/storybook-static --ci --host-token-env-variable=GITHUB_TOKEN
+        run: yarn deploy-storybook --existing-output-dir=storybook-static --ci --host-token-env-variable=GITHUB_TOKEN
 
       - name: Publish Storybook to chromatic 🧪
         uses: chromaui/action@v1
