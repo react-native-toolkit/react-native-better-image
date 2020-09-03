@@ -68,16 +68,19 @@ jobs:
         working-directory: example
         run: expo publish
 
+      - name: Build StoryBook 📚
+        run: yarn example build-storybook
+
       - name: Publish Storybook to chromatic 🧪
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-        working-directory: example
+          storybookBuildDir: example/storybook-static
 
       - name: Publish Storybook to GH Pages 🕸
         working-directory: example
-        run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
+        run: yarn deploy-storybook --existing-output-dir=example/storybook-static --ci --host-token-env-variable=GITHUB_TOKEN
   # build-and-deploy:
   #   needs: [test]
   #   runs-on: ubuntu-latest
