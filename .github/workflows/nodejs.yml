@@ -57,13 +57,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
+      - run: npm install -g yarn
+      - run: yarn bootstrap
       # - uses: expo/expo-github-action@v5
       #   with:
       #     expo-version: 3.x
       #     expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
       #     expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       # - run: yarn bootstrap
-
       # - name: Publish Example App to expo 🚀
       #   working-directory: example
       #   run: expo publish
