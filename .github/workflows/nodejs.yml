@@ -64,36 +64,43 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: yarn bootstrap
 
-      - name: Publish App to expo 🚀
+      - name: Publish Example App to expo 🚀
         working-directory: example
         run: expo publish
 
-      - name: Publish App to chromatic
+      - name: Publish Storybook to chromatic 🧪
         working-directory: example
-        run: yarn chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-  build-and-deploy:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: chromaui/action@v1
         with:
-          persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
-      - name: Install Node.js 🏗
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
+      - name: Publish Storybook to GH Pages 🕸
+        working-directory: example
+        run: yarn deploy-storybook --ci --host-token-env-variable=GITHUB_TOKEN
+  # build-and-deploy:
+  #   needs: [test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout 🛎️
+  #       uses: actions/checkout@v2
+  #       with:
+  #         persist-credentials: false
 
-      - name: Build Project 🔧
-        run: |
-          npm install -g yarn
-          yarn bootstrap
-          yarn example build-storybook
+  #     - name: Install Node.js 🏗
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12.x
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.5.9
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: example/storybook-static # The folder the action should deploy.
+  #     - name: Build Project 🔧
+  #       run: |
+  #         npm install -g yarn
+  #         yarn bootstrap
+  #         yarn example build-storybook
+
+  #     - name: Deploy 🚀
+  #       uses: JamesIves/github-pages-deploy-action@3.5.9
+  #       with:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         BRANCH: gh-pages # The branch the action should deploy to.
+  #         FOLDER: example/storybook-static # The folder the action should deploy.
