@@ -69,11 +69,11 @@ jobs:
         run: expo publish
 
       - name: Publish Storybook to chromatic 🧪
-        working-directory: example
         uses: chromaui/action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        working-directory: example
 
       - name: Publish Storybook to GH Pages 🕸
         working-directory: example
