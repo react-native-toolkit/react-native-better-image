@@ -9,6 +9,8 @@ export default {
 
 const Template = (args) => <BetterImage {...args} />;
 
+const imageStyle = { height: 200, width: 400 };
+
 const validSource = () => ({
   source: {
     uri: `https://unsplash.com/photos/yNvVnPcurD8/download?force=true&w=2400&bust=${Math.random()}`,
@@ -23,7 +25,7 @@ const validSource = () => ({
 export const ValidImage = Template.bind({});
 ValidImage.args = {
   ...validSource(),
-  viewStyle: { height: 400, width: 400 },
+  viewStyle: imageStyle,
   resizeMode: 'contain',
 };
 
@@ -42,7 +44,7 @@ const inValidSource = () => ({
 export const InvalidImage = Template.bind({});
 InvalidImage.args = {
   ...inValidSource(),
-  viewStyle: { height: 400, width: 400 },
+  viewStyle: imageStyle,
   resizeMode: 'contain',
 };
 
@@ -60,14 +62,14 @@ const invalidImageOnlySource = () => ({
 export const InvalidImageButWithValidThumbnail = Template.bind({});
 InvalidImageButWithValidThumbnail.args = {
   ...invalidImageOnlySource(),
-  viewStyle: { height: 400, width: 400 },
+  viewStyle: imageStyle,
   resizeMode: 'contain',
 };
 
 export const CustomImageFadeDuration = Template.bind({});
 CustomImageFadeDuration.args = {
   ...validSource(),
-  viewStyle: { height: 400, width: 400 },
+  viewStyle: imageStyle,
   resizeMode: 'contain',
   thumbnailFadeDuration: 250,
   imageFadeDuration: 2000,
