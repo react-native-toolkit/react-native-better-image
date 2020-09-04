@@ -1,0 +1,82 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '!*' # Do not execute on tags
+    paths:
+      - src/*
+      - test/*
+      - __tests__/*
+      - '*.json'
+      - yarn.lock
+      - .github/**/*.yml
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macOS-latest]
+        node: ['12.x']
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npx yarn bootstrap
+      - run: npx yarn test
+
+  coverage:
+    needs: [test]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+      - run: npx yarn bootstrap
+      - uses: paambaati/codeclimate-action@v2.5.3
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+        with:
+          coverageCommand: npx yarn coverage
+          debug: true
+
+  publish:
+    needs: [test]
+    name: Publish example app to Expo 🚀
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+      - run: npx yarn bootstrap
+      - working-directory: example
+        run: expo publish
+
+  chromatic:
+    needs: [test]
+    name: Publish storybook to chromatic 🧪
+    defaults:
+      run:
+        working-directory: example
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 12.x
+        - run: cd .. && npx yarn bootstrap && cd example
+        - uses: chromaui/action@v1
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
