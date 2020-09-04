@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/react-native-toolkit/react-native-better-image/issues"
   },
-  "homepage": "https://github.com/react-native-toolkit/react-native-better-image#readme",
+  "homepage": "https://betterimage.netlify.app",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.16.2",
