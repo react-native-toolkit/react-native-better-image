@@ -1,6 +1,9 @@
 # logs
 *.log
 
+# coverage
+coverage
+
 # OSX
 #
 .DS_Store
