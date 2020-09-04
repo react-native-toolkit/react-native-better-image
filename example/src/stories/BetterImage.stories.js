@@ -11,13 +11,13 @@ const Template = (args) => <BetterImage {...args} />;
 
 const validSource = () => ({
   source: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/yNvVnPcurD8/download?force=true&w=2400&bust=${Math.random()}`,
   },
   thumbnailSource: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/yNvVnPcurD8/download?force=true&w=24&bust=${Math.random()}`,
   },
   fallbackSource: {
-    uri: `https://pyt-images.imgix.net/images/place-holder.png?bust=${Math.random()}`,
+    uri: `https://unsplash.com/a/img/empty-states/photos.png?bust=${Math.random()}`,
   },
 });
 export const ValidImage = Template.bind({});
@@ -29,13 +29,13 @@ ValidImage.args = {
 
 const inValidSource = () => ({
   source: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/2347729843y7/download?force=true&w=2400&bust=${Math.random()}`,
   },
   thumbnailSource: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/2347729843y7/download?force=true&w=24&bust=${Math.random()}`,
   },
   fallbackSource: {
-    uri: `https://pyt-images.imgix.net/images/place-holder.png?bust=${Math.random()}`,
+    uri: `https://unsplash.com/a/img/empty-states/photos.png?bust=${Math.random()}`,
   },
 });
 
@@ -48,13 +48,13 @@ InvalidImage.args = {
 
 const invalidImageOnlySource = () => ({
   source: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/2347729843y7/download?force=true&w=2400&bust=${Math.random()}`,
   },
   thumbnailSource: {
-    uri: `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+    uri: `https://unsplash.com/photos/yNvVnPcurD8/download?force=true&w=24&bust=${Math.random()}`,
   },
   fallbackSource: {
-    uri: `https://pyt-images.imgix.net/images/place-holder.png?bust=${Math.random()}`,
+    uri: `https://unsplash.com/a/img/empty-states/photos.png?bust=${Math.random()}`,
   },
 });
 export const InvalidImageButWithValidThumbnail = Template.bind({});
