@@ -1,5 +1,12 @@
 <div align="center">
 
+<img
+  src="https://github.com/react-native-toolkit/react-native-better-image/raw/master/assets/logo.png"
+  alt="better-image-logo"
+  height="150px"
+  width="150px"
+/>
+
 # React Native Better Image
 
 A better image component for react-native with fallback images & progressive loading support
