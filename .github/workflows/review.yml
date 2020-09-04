@@ -31,3 +31,18 @@ jobs:
       - uses: romeovs/lcov-reporter-action@v0.2.16
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  chromatic:
+    needs: [test]
+    name: Publish storybook to chromatic 🧪
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: npx yarn bootstrap
+      - run: npx yarn chromatic
+        working-directory: example
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
