@@ -60,6 +60,7 @@ jobs:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
   expo-publish:
+    needs: [test, lint]
     name: Publish to Expo 🚀
     runs-on: ubuntu-latest
     steps:
