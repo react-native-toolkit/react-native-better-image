@@ -1,8 +1,5 @@
 name: publish
 on:
-  push:
-    tags:
-      - 'v*'
   release:
     types: [published]
 
