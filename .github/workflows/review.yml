@@ -2,6 +2,18 @@ name: review
 on: pull_request
 
 jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.x
+      - run: npx yarn bootstrap
+      - run: npx yarn typescript
+      - run: npx yarn lint
+
   test:
     strategy:
       matrix:
@@ -18,7 +30,7 @@ jobs:
       - run: npx yarn test
 
   coverage:
-    needs: [test]
+    needs: [test, lint]
     name: coverage
     runs-on: ubuntu-latest
     steps:
@@ -33,7 +45,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
   chromatic:
-    needs: [test]
+    needs: [test, lint]
     name: Publish storybook to chromatic 🧪
     runs-on: ubuntu-latest
     steps:
