@@ -1,6 +1,6 @@
 {
   "name": "react-native-better-image",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A better image component for react-native with fallback images &amp; progressive loading support",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
