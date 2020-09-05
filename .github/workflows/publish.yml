@@ -32,6 +32,7 @@ jobs:
       - run: npx yarn test
 
   publish:
+    needs: [test, lint]
     name: Publish to npm 🚢📦
     runs-on: ubuntu-latest
     steps:
