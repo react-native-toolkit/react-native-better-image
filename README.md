@@ -27,7 +27,7 @@ Built on top of `View`, `Image` & `Animated` components
 
 [![Storybook][storybook-badge]][website] [![Chromatic][chromatic-badge]][chromatic]
 
-![better-image-cover](./assets/cover.gif)
+![better-image-cover](https://github.com/react-native-toolkit/react-native-better-image/raw/master/assets/cover.gif)
 
 ### Compatible with Expo & React Native Web 🚀
 
