@@ -60,6 +60,7 @@ jobs:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
   expo-publish:
+    needs: [test, lint]
     name: Publish to Expo 🚀
     runs-on: ubuntu-latest
     steps:
@@ -79,4 +80,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: App is ready for review, you can [see it here](https://expo.io/@daniakash/use-expo?release-channel=pr-${{ github.event.number }}).
+          msg: App is ready for review, you can [see it here](https://expo.io/@daniakash/react-native-better-image-example?release-channel=pr-${{ github.event.number }}).
