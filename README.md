@@ -27,6 +27,8 @@ Built on top of `View`, `Image` & `Animated` components
 
 [![Storybook][storybook-badge]][website] [![Chromatic][chromatic-badge]][chromatic]
 
+![better-image-cover](./assets/cover.gif)
+
 ### Compatible with Expo & React Native Web 🚀
 
 ### PRs Welcome 👍✨
