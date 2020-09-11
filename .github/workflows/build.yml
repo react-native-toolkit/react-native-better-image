@@ -55,7 +55,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         with:
-          coverageCommand: npx yarn coverage
+          coverageCommand: npx yarn test --coverage
           debug: true
 
   publish:
