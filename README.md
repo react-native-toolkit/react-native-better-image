@@ -88,7 +88,7 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 ## License
 
-MIT
+MIT © [DaniAkash][twitter]
 
 [build]: https://github.com/react-native-toolkit/react-native-better-image/actions
 [build-badge]: https://github.com/react-native-toolkit/react-native-better-image/workflows/build/badge.svg
