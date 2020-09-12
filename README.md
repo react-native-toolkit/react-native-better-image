@@ -25,6 +25,10 @@ Built on top of `View`, `Image` & `Animated` components
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Twitter Follow][twitter-badge]][twitter]
 
+[![donate][coffee-badge]][coffee-url]
+[![sponsor][sponsor-badge]][sponsor-url]
+[![support][support-badge]][support-url]
+
 [![Storybook][storybook-badge]][website] [![Chromatic][chromatic-badge]][chromatic]
 
 ![better-image-cover](https://github.com/react-native-toolkit/react-native-better-image/raw/master/assets/cover.gif)
@@ -90,6 +94,12 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 
 MIT © [DaniAkash][twitter]
 
+[coffee-badge]: https://img.shields.io/badge/-%E2%98%95%EF%B8%8F%20buy%20me%20a%20coffee-e85b46
+[coffee-url]: https://www.buymeacoffee.com/daniakash
+[sponsor-badge]: https://img.shields.io/badge/-%F0%9F%8F%85%20sponsor%20this%20project-e85b46
+[sponsor-url]: https://www.buymeacoffee.com/daniakash/e/6983
+[support-badge]: https://img.shields.io/badge/-Get%20Support-e85b46
+[support-url]: https://www.buymeacoffee.com/daniakash/e/7030
 [build]: https://github.com/react-native-toolkit/react-native-better-image/actions
 [build-badge]: https://github.com/react-native-toolkit/react-native-better-image/workflows/build/badge.svg
 [coverage-badge]: https://api.codeclimate.com/v1/badges/acf5243d130542dde7c9/test_coverage
