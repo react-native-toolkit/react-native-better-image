@@ -1,6 +1,6 @@
 {
   "name": "react-native-better-image",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A better image component for react-native with fallback images &amp; progressive loading support",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -31,8 +31,9 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "fallback-images",
+    "progressive-image",
+    "image"
   ],
   "repository": "https://github.com/react-native-toolkit/react-native-better-image",
   "author": "DaniAkash <s.daniakash@gmail.com> (https://github.com/DaniAkash)",
