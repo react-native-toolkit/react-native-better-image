@@ -63,7 +63,7 @@ import BetterImage from 'react-native-better-image';
 // ...
 
 <BetterImage
-  containerStyle={style}
+  viewStyle={style}
   source={{
     uri: // image uri
   }}
