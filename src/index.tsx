@@ -20,7 +20,8 @@ export interface BetterImageProps extends ImageProps {
   thumbnailFadeDuration?: number;
   imageFadeDuration?: number;
   isFast?: number;
-  thumbnailSource?: boolean;
+  source?: ImageSourcePropType;
+  thumbnailSource?: ImageSourcePropType;
   thumbnailBlurRadius?: number;
   fallbackSource?: ImageSourcePropType;
   children?: ReactNode;
