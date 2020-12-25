@@ -19,7 +19,7 @@ export interface BetterImageProps extends ImageProps {
   viewStyle?: StyleProp<ViewStyle>;
   thumbnailFadeDuration?: number;
   imageFadeDuration?: number;
-  isFast?: number;
+  isFast?: boolean;
   source?: ImageSourcePropType;
   thumbnailSource?: ImageSourcePropType;
   thumbnailBlurRadius?: number;
