@@ -142,7 +142,6 @@
     ]
   },
   "dependencies": {
-    "use-deep-compare-effect": "^1.4.0",
-    "react-native-fast-image": "^8.3.4"
+    "use-deep-compare-effect": "^1.4.0"
   }
 }
