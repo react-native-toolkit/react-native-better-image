@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, ReactNode } from 'react';
+import React, { useRef, useCallback, useState, ReactNode, Component } from 'react';
 import {
   View,
   Image,
@@ -18,7 +18,7 @@ export interface BetterImageProps extends ImageProps {
   viewStyle?: StyleProp<ViewStyle>;
   thumbnailFadeDuration?: number;
   imageFadeDuration?: number;
-  isFast?: boolean;
+  imageComponent?: Component;
   source?: ImageSourcePropType;
   thumbnailSource?: ImageSourcePropType;
   thumbnailBlurRadius?: number;
