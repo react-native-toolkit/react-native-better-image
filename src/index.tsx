@@ -13,7 +13,6 @@ import {
   ImageErrorEventData,
 } from 'react-native';
 import { useDeepCompareEffectNoCheck } from 'use-deep-compare-effect';
-import FastImage from 'react-native-fast-image';
 
 export interface BetterImageProps extends ImageProps {
   viewStyle?: StyleProp<ViewStyle>;
@@ -29,8 +28,6 @@ export interface BetterImageProps extends ImageProps {
 
 const { Value, createAnimatedComponent, timing } = Animated;
 
-const AnimatedImage = createAnimatedComponent(Image);
-const AnimatedFImage = createAnimatedComponent(FastImage);
 const AnimatedImageBackground = createAnimatedComponent(ImageBackground);
 
 const BetterImage = ({
@@ -39,7 +36,7 @@ const BetterImage = ({
   imageFadeDuration = 250,
   thumbnailSource,
   source,
-  isFast = false,
+  imageComponent = Image,
   onLoadEnd,
   resizeMethod,
   resizeMode,
@@ -107,7 +104,8 @@ const BetterImage = ({
     [source, thumbnailSource]
   );
 
-  const ImageComponent = children ? AnimatedImageBackground : isFast ? AnimatedFImage : AnimatedImage;
+  const AnimatedImage = createAnimatedComponent(imageComponent);
+  const ImageComponent = children ? AnimatedImageBackground : AnimatedImage;
 
   return (
     <View style={[styles.imageContainerStyle, viewStyle]}>
