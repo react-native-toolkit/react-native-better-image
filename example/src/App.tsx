@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking } from 'react-native';
 import BetterImage from 'react-native-better-image';
 
 const styles = StyleSheet.create({
@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  titleStyle: {
+    fontWeight: 'bold',
   },
 });
 
@@ -32,30 +35,27 @@ function useInterval(callback: () => unknown, delay: number) {
   }, [delay]);
 }
 
+const ImageUrl = `https://images.unsplash.com/photo-1610746334198-e7525c63509c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&h=900`;
+const ThumbnailUrl = `https://images.unsplash.com/photo-1610746334198-e7525c63509c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&h=90`;
+
 const validSource = {
   title: 'Valid Image & Thumbnail',
-  image: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
-  thumbnail: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+  image: () => `${ImageUrl}&bust=${Math.random()}`,
+  thumbnail: () => `${ThumbnailUrl}&bust=${Math.random()}`,
   placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
 };
 
 const inValidSource = {
   title: 'Invalid Image & Thumbnail',
-  image: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
-  thumbnail: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+  image: () => `not found`,
+  thumbnail: () => `not found`,
   placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
 };
 
 const invalidImageOnlySource = {
   title: 'Invalid Image & Valid Thumbnail',
-  image: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/nowheretobefound.png?h=346.5&w=252&crop=fit&dpr=0.3&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
-  thumbnail: () =>
-    `https://pyt-images.imgix.net/images/app/pretrip/australia.png?h=346.5&w=252&crop=fit&dpr=0.1&auto=format,compress,enhance&q=10&bust=${Math.random()}`,
+  image: () => `not found`,
+  thumbnail: () => `${ThumbnailUrl}&bust=${Math.random()}`,
   placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
 };
 
@@ -82,7 +82,10 @@ function App() {
 
   return (
     <View style={styles.container}>
-      <Text>{imageSource.title}</Text>
+      <Text>Various scenarios will change every 5 seconds</Text>
+      <Text>
+        Scenario: <Text style={styles.titleStyle}>{imageSource.title}</Text>
+      </Text>
       <BetterImage
         viewStyle={style}
         source={{
@@ -96,6 +99,30 @@ function App() {
         }}
         resizeMode={'cover'}
       />
+      <Text>
+        Photo by{' '}
+        <Text
+          style={styles.titleStyle}
+          onPress={() =>
+            Linking.openURL(
+              'https://unsplash.com/@vovcarrot?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'
+            )
+          }
+        >
+          Vladimir Gladkov
+        </Text>{' '}
+        on{' '}
+        <Text
+          style={styles.titleStyle}
+          onPress={() =>
+            Linking.openURL(
+              'https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText'
+            )
+          }
+        >
+          Unsplash
+        </Text>
+      </Text>
     </View>
   );
 }
