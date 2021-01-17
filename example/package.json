@@ -11,8 +11,7 @@
     "start": "expo start",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public --no-dll",
-    "deploy-storybook": "storybook-to-ghpages",
+    "build-storybook": "build-storybook -o public",
     "chromatic": "npx chromatic"
   },
   "dependencies": {
@@ -32,18 +31,11 @@
     "@storybook/addon-essentials": "^6.1.14",
     "@storybook/addon-links": "^6.1.14",
     "@storybook/react": "^6.1.14",
-    "@storybook/storybook-deployer": "^2.8.7",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "^8.2.3",
     "chromatic": "^5.1.0",
     "expo-cli": "4.0.17",
     "react-is": "17.0.1"
-  },
-  "homepage": "https://react-native-toolkit.github.io/react-native-better-image",
-  "storybook-deployer": {
-    "gitUsername": "DaniAkash",
-    "gitEmail": "s.daniakash@gmail.com",
-    "commitMessage": "Deploying Storybook"
   }
 }
