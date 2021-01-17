@@ -37,26 +37,27 @@ function useInterval(callback: () => unknown, delay: number) {
 
 const ImageUrl = `https://images.unsplash.com/photo-1610746334198-e7525c63509c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&h=900`;
 const ThumbnailUrl = `https://images.unsplash.com/photo-1610746334198-e7525c63509c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&h=90`;
+const placeholderUrl = `https://unsplash.com/a/img/empty-states/photos.png`;
 
 const validSource = {
   title: 'Valid Image & Thumbnail',
   image: () => `${ImageUrl}&bust=${Math.random()}`,
   thumbnail: () => `${ThumbnailUrl}&bust=${Math.random()}`,
-  placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
+  placeholder: () => placeholderUrl,
 };
 
 const inValidSource = {
   title: 'Invalid Image & Thumbnail',
   image: () => `not found`,
   thumbnail: () => `not found`,
-  placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
+  placeholder: () => placeholderUrl,
 };
 
 const invalidImageOnlySource = {
   title: 'Invalid Image & Valid Thumbnail',
   image: () => `not found`,
   thumbnail: () => `${ThumbnailUrl}&bust=${Math.random()}`,
-  placeholder: () => `https://pyt-images.imgix.net/images/place-holder.png`,
+  placeholder: () => placeholderUrl,
 };
 
 const sources = [validSource, inValidSource, invalidImageOnlySource];
