@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, ReactNode } from 'react';
+import React, { useRef, useCallback, useState, ReactNode, Component } from 'react';
 import {
   View,
   Image,
@@ -18,6 +18,8 @@ export interface BetterImageProps extends ImageProps {
   viewStyle?: StyleProp<ViewStyle>;
   thumbnailFadeDuration?: number;
   imageFadeDuration?: number;
+  imageComponent?: Component;
+  source?: ImageSourcePropType;
   thumbnailSource?: ImageSourcePropType;
   thumbnailBlurRadius?: number;
   fallbackSource?: ImageSourcePropType;
@@ -26,7 +28,6 @@ export interface BetterImageProps extends ImageProps {
 
 const { Value, createAnimatedComponent, timing } = Animated;
 
-const AnimatedImage = createAnimatedComponent(Image);
 const AnimatedImageBackground = createAnimatedComponent(ImageBackground);
 
 const BetterImage = ({
@@ -35,6 +36,7 @@ const BetterImage = ({
   imageFadeDuration = 250,
   thumbnailSource,
   source,
+  imageComponent = Image,
   onLoadEnd,
   resizeMethod,
   resizeMode,
@@ -102,6 +104,7 @@ const BetterImage = ({
     [source, thumbnailSource]
   );
 
+  const AnimatedImage = createAnimatedComponent(imageComponent);
   const ImageComponent = children ? AnimatedImageBackground : AnimatedImage;
 
   return (
