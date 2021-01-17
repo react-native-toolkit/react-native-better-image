@@ -11,7 +11,7 @@
     "start": "expo start",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o public",
+    "build-storybook": "build-storybook",
     "chromatic": "npx chromatic"
   },
   "dependencies": {
